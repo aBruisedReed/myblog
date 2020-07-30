@@ -35,8 +35,14 @@ function addList(title, para) {
 function loadList() { //메인에서 글 불러오는 함수
   let arr = JSON.parse(window.localStorage.getItem('list'));
   // console.log(arr);
-  
+  let c=0;
+  let container = document.createElement('div');
+  container.setAttribute('class', 'container');
   for(let i=arr.length-1; i>=0; i--) {
+    if(c%3==0) {
+      container = document.createElement('div');
+      container.setAttribute('class', 'container');
+    }
     // let like = arr[i].like; 메인에서 보일 필요가 없다.
     let article = document.getElementById("art");
     let img = document.createElement("img");
@@ -47,7 +53,12 @@ function loadList() { //메인에서 글 불러오는 함수
     tt.setAttribute("id", "index_article_title");
     let p = document.createElement("p");
     p.setAttribute("id", "index_article_p");
-    p.innerHTML = arr[i].para;
+    let para = arr[i].para;
+    if(para.length > 40) {
+      para = para.substring(0, 40)+"...";
+    }
+    p.innerHTML = para;
+    // p.innerHTML = arr[i].para;
     let newDiv = document.createElement("div");
     newDiv.appendChild(img);
     newDiv.appendChild(tt);
@@ -55,7 +66,9 @@ function loadList() { //메인에서 글 불러오는 함수
     newDiv.setAttribute("class", "articles")
     newDiv.setAttribute("onclick", "moveShow()");
     newDiv.setAttribute("style", "cursor: pointer");
-    article.appendChild(newDiv);
+    container.appendChild(newDiv);
+    article.appendChild(container);
+    c++;
   }
 }
 
