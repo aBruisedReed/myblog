@@ -56,6 +56,11 @@ header h2 {
   margin-bottom: 40px;
   box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
   width: 80%;
+  transition: opacity 0.5s;
+}
+
+.articles:hover {
+  opacity: 0.7;
 }
 
 .articles img {
