@@ -163,3 +163,8 @@ form {
   width: 100px;
   padding: 10px 0px;
 } 
+
+form {
+  width: 950px;
+  margin: 0 auto;
+}
