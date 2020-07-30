@@ -171,3 +171,18 @@ function showArticle() {
   article.appendChild(newDiv);
   arr[i]
 }
+
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    document.getElementById('headerH1').style.display = 'inline';
+    document.getElementById('headerH2').style.display = 'inline';
+    document.getElementById('header').style.height = '50px';
+    document.getElementById('header').style.border = "1px solid black";
+  } else {
+    document.getElementById('headerH1').style.display = 'block';
+    document.getElementById('headerH2').style.display = 'block';
+    document.getElementById('header').style.height = '150px';
+    document.getElementById('header').style.border = "0px solid black";
+  }
+}
