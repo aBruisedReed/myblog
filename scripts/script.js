@@ -36,7 +36,7 @@ function loadList() { //메인에서 글 불러오는 함수
   let arr = JSON.parse(window.localStorage.getItem('list'));
   // console.log(arr);
   
-  for(let i=0; i<arr.length; i++) {
+  for(let i=arr.length-1; i>=0; i--) {
     // let like = arr[i].like; 메인에서 보일 필요가 없다.
     let article = document.getElementById("art");
     let img = document.createElement("img");
