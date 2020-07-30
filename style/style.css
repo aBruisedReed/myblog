@@ -27,6 +27,10 @@ header h2 {
   background-color: black;
 }
 
+button {
+  cursor:pointer;
+}
+
 /* index.html */
 
 #write {
@@ -34,7 +38,7 @@ header h2 {
 }
 
 #write_input {
-  width: 60%;
+  width: 65vw;
   height: 50px;
   font-size: 28px;
   text-align: center;
@@ -55,7 +59,7 @@ header h2 {
   text-align: left;
   margin-bottom: 40px;
   box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-  width: 80%;
+  width: 70vw;
   transition: opacity 0.5s;
 }
 
