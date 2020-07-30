@@ -1,3 +1,5 @@
+let clicks = 0;
+
 function moveToWrite() {
   let title = document.getElementById("write_input").value;
   window.localStorage.setItem('temp', title); //제목 데이터 저장
@@ -96,6 +98,35 @@ function moveShow() {
   location.href='show_article.html';
 }
 
+// 수정버튼 클릭 시 기능 구현
+function editClicked() { 
+
+}
+
+// 삭제버튼 클릭 시 기능 구현
+function delClicked() {
+  let sure = confirm("정말 삭제하시겠습니까?");
+  if(sure) {
+    let arr = JSON.parse(window.localStorage.getItem('list'));
+    let obj = Object(arr);
+    let i = findList();
+    obj.splice(i, 1);
+    console.log(obj);
+    window.localStorage.setItem('list', JSON.stringify(arr));
+    alert('삭제가 완료되었습니다.');
+    location.href='index.html';
+  }
+  else {
+  }
+}
+
+
+function likeClicked() {
+  
+  clicks += 1;
+  document.getElementById("like_count").innerHTML = clicks;
+}
+
 function showArticle() {
   let arr = JSON.parse(window.localStorage.getItem('list'));
   let i = findList();
@@ -115,6 +146,18 @@ function showArticle() {
   let likeCount = document.createElement("span");
   likeCount.setAttribute("id", "like_count");
   likeCount.innerHTML = arr[i].like;
+  let editDel = document.createElement("div");
+  editDel.setAttribute("id", "editDel");
+  let editBtn = document.createElement("button");
+  editBtn.innerHTML = "edit";
+  editBtn.setAttribute("id", "edit_button");
+  editBtn.setAttribute("onclick", "editClicked()");
+  let delBtn = document.createElement("button");
+  delBtn.innerHTML = "delete";
+  delBtn.setAttribute("id", "del_button");
+  delBtn.setAttribute("onclick", "delClicked()");
+  editDel.appendChild(editBtn);
+  editDel.appendChild(delBtn);
   let newDiv = document.createElement("div");
   // newDiv.setAttribute("id", "article")
   newDiv.appendChild(img);
@@ -122,7 +165,8 @@ function showArticle() {
   newDiv.appendChild(p);
   newDiv.appendChild(likeBtn);
   newDiv.appendChild(likeCount);
-  newDiv.setAttribute("onclick", "moveShow()");
+  newDiv.appendChild(editDel);
+  // newDiv.setAttribute("onclick", "moveShow()");
   newDiv.setAttribute("style", "cursor: pointer");
   article.appendChild(newDiv);
   arr[i]

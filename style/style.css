@@ -146,6 +146,29 @@ button {
   margin-bottom: 30px;
 }
 
+#editDel {
+  width: 100%;
+  text-align: right;
+}
+
+#edit_button {
+  margin: 10px 10px;
+  width: 60px;
+  height: 20px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+#del_button {
+  margin: 10px 10px;
+  width: 60px;
+  height: 20px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+
 
 /* write_article.html */
 
