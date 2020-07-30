@@ -1,3 +1,4 @@
+// 
 let clicks = 0;
 
 function moveToWrite() {
