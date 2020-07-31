@@ -228,5 +228,17 @@ form {
 footer {
   height: 50vh;
   background-color: #777;
+  text-align: left;
 }
 
+#widget {
+  font-size: 10px;
+  margin-left: 20px;
+  padding-top: 20px;
+}
+
+footer h5 { 
+  display: block;
+  width: 100%;
+  text-align: center;
+}
