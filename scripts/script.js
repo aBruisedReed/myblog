@@ -144,6 +144,7 @@ function showArticle() {
   likeBtn.setAttribute("id", "like_button");
   likeBtn.setAttribute("onclick", "likeClicked()");
   likeBtn.innerHTML = "♥︎ Like";
+  likeBtn.setAttribute("style", "cursor: pointer");
   let likeCount = document.createElement("span");
   likeCount.setAttribute("id", "like_count");
   likeCount.innerHTML = arr[i].like;
@@ -153,10 +154,12 @@ function showArticle() {
   editBtn.innerHTML = "edit";
   editBtn.setAttribute("id", "edit_button");
   editBtn.setAttribute("onclick", "editClicked()");
+  editBtn.setAttribute("style", "cursor: pointer");
   let delBtn = document.createElement("button");
   delBtn.innerHTML = "delete";
   delBtn.setAttribute("id", "del_button");
   delBtn.setAttribute("onclick", "delClicked()");
+  delBtn.setAttribute("style", "cursor: pointer");
   editDel.appendChild(editBtn);
   editDel.appendChild(delBtn);
   let newDiv = document.createElement("div");
@@ -168,7 +171,7 @@ function showArticle() {
   newDiv.appendChild(likeCount);
   newDiv.appendChild(editDel);
   // newDiv.setAttribute("onclick", "moveShow()");
-  newDiv.setAttribute("style", "cursor: pointer");
+  // newDiv.setAttribute("style", "cursor: pointer");
   article.appendChild(newDiv);
   arr[i]
 }
