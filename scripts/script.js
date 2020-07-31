@@ -2,10 +2,11 @@
 let clicks = 0;
 
 function moveToWrite() {
-  let title = document.getElementById("write_input").value;
-  window.localStorage.setItem('temp', title); //제목 데이터 저장
-  location.href='write_article.html';
-}
+    let title = document.getElementById("write_input").value;
+    window.localStorage.setItem('temp', title); //제목 데이터 저장
+    location.href='write_article.html';
+  }
+  
 
 function writeButton() {
   let para = CKEDITOR.instances.editor1.getData();
@@ -13,6 +14,14 @@ function writeButton() {
   console.log("title:"+title);
   console.log("article:"+para);
   addList(title, para);
+  let arr = JSON.parse(window.localStorage.getItem('list'));
+  location.href='index.html';
+}
+
+function editButton() {
+  let para = CKEDITOR.instances.editor2.getData();
+  let title = document.getElementById('title_write').value;
+  editList(title, para);
   let arr = JSON.parse(window.localStorage.getItem('list'));
   location.href='index.html';
 }
@@ -32,6 +41,19 @@ function addList(title, para) {
   obj.date = new Date();
   obj.like = 0;
   arr.push(obj);
+  window.localStorage.setItem('list', JSON.stringify(arr));
+}
+
+function editList(title, para) {
+  let arr = JSON.parse(window.localStorage.getItem('list'));
+  let obj = Object(arr);
+  let i = findList();
+  let temp_obj = {};
+  temp_obj.title = title;
+  temp_obj.para = para;
+  temp_obj.date = new Date();
+  temp_obj.like = obj[i].like;
+  obj.splice(i, 1, temp_obj);
   window.localStorage.setItem('list', JSON.stringify(arr));
 }
 
@@ -101,7 +123,11 @@ function moveShow() {
 
 // 수정버튼 클릭 시 기능 구현
 function editClicked() { 
-
+  let arr = JSON.parse(window.localStorage.getItem('list'));
+  let obj = Object(arr);
+  let i = findList();
+  location.href='edit_article.html';
+  CKEDITOR.instances.editor2.setData('asdadada');
 }
 
 // 삭제버튼 클릭 시 기능 구현
@@ -123,9 +149,13 @@ function delClicked() {
 
 
 function likeClicked() {
-  
-  clicks += 1;
-  document.getElementById("like_count").innerHTML = clicks;
+  let arr = JSON.parse(window.localStorage.getItem('list'));
+  let obj = Object(arr);
+  let i = findList();
+  obj[i].like++;
+  // clicks += 1;
+  window.localStorage.setItem('list', JSON.stringify(arr));
+  document.getElementById("like_count").innerHTML = obj[i].like;
 }
 
 function showArticle() {
