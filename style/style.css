@@ -146,7 +146,18 @@ button {
   padding: 5px 10px;
   border-radius: 5px;
   margin-bottom: 30px;
+  transition: all .2s ease-in-out; 
 }
+
+#like_button:hover { 
+transform: scale(1.1); 
+}
+
+#like_button:active {
+  transform: scale(1);
+  background-color: #C8002D;
+}
+
 
 #like_count {
   color: indianred;
@@ -169,6 +180,10 @@ button {
   border: none;
 }
 
+#edit_button:hover {
+  background-color: #444;
+}
+
 #del_button {
   margin: 10px 10px;
   width: 60px;
@@ -178,6 +193,9 @@ button {
   border: none;
 }
 
+#del_button:hover {
+  background-color: #444;
+}
 
 /* write_article.html */
 
