@@ -261,3 +261,38 @@ footer h5 {
   width: 100%;
   text-align: center;
 }
+
+
+/* edit_article */
+
+.edit_footer {
+  margin: 0;
+  height: 50px;
+  background-color: #777;
+  text-align: left;
+}
+
+.edit_footer h5 {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.input_image {
+  display: none;
+}
+
+.upload_button {
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}
+
+.upload_button:hover {
+  background-color: #444;
+}

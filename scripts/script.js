@@ -1,5 +1,6 @@
 // 
 let clicks = 0;
+let image_url="";
 
 function moveToWrite() {
     let title = document.getElementById("write_input").value;
@@ -30,6 +31,8 @@ function loadTitle() { //메인에서 적은 임시 제목 가져오기
   document.getElementById('title_write').value = window.localStorage.getItem('temp');
 }
 
+
+
 function addList(title, para) {
   if(window.localStorage.getItem('list') == null) { //리스트가 비어있다면 초기화
     window.localStorage.setItem('list', JSON.stringify([]));
@@ -40,6 +43,7 @@ function addList(title, para) {
   obj.para = para;
   obj.date = new Date();
   obj.like = 0;
+  
   arr.push(obj);
   window.localStorage.setItem('list', JSON.stringify(arr));
 }
@@ -71,7 +75,7 @@ function loadList() { //메인에서 글 불러오는 함수
     // let like = arr[i].like; 메인에서 보일 필요가 없다.
     let article = document.getElementById("art");
     let img = document.createElement("img");
-    img.setAttribute("src", "https://loremflickr.com/320/240?lock="+Math.floor(Math.random()*200));
+    img.setAttribute("src", "https://loremflickr.com/g/320/240/paris?lock="+Math.floor(Math.random()*200));
     //랜덤이미지, 로딩이 느리므로 로컬로 저장해서 쓰는게 나을듯.
     let tt = document.createElement("h3");
     tt.innerHTML = arr[i].title;
@@ -127,8 +131,17 @@ function editClicked() {
   let obj = Object(arr);
   let i = findList();
   location.href='edit_article.html';
-  CKEDITOR.instances.editor2.setData('asdadada');
 }
+
+// edit시 제목과 내용을 불러오는 기능
+function loadEdit() {
+  document.getElementById('title_write').value = window.localStorage.getItem('temp');
+  let arr = JSON.parse(window.localStorage.getItem('list'));
+  let obj = Object(arr);
+  let i = findList();
+}
+
+
 
 // 삭제버튼 클릭 시 기능 구현
 function delClicked() {
@@ -163,7 +176,7 @@ function showArticle() {
   let i = findList();
   let article = document.getElementById('article');
   let img = document.createElement("img");
-  img.setAttribute("src", "https://loremflickr.com/320/240?lock="+Math.floor(Math.random()*200));
+  img.setAttribute("src", "https://loremflickr.com/g/320/240/paris?lock="+Math.floor(Math.random()*200));
   //랜덤이미지, 로딩이 느리므로 로컬로 저장해서 쓰는게 나을듯.
   img.setAttribute("id", "photo");
   let tt = document.createElement("h2");
@@ -203,7 +216,7 @@ function showArticle() {
   // newDiv.setAttribute("onclick", "moveShow()");
   // newDiv.setAttribute("style", "cursor: pointer");
   article.appendChild(newDiv);
-  arr[i]
+  // arr[i]
 }
 
 window.onscroll = function() {scrollFunction()};

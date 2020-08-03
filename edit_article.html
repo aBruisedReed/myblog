@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="scripts/script.js"></script>
-  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="style/style.css">
   <title>My Blog - Write</title>
@@ -27,14 +27,15 @@
       </textarea>
       <script>
         CKEDITOR.replace( 'editor2', {
-          height: 700
+          height: 700,
         } );
+        
       </script>
     </form>
       <button id="writebtn" onclick="editButton()">Edit</button>
       <button id="cancelbtn" onclick="location.href='index.html';">Cancel</button>
   </section>
-  <footer>
+  <footer class="edit_footer">
     <h5>Powered by w3.css</h5>
   </footer>
 </body>
