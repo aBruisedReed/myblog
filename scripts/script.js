@@ -93,7 +93,7 @@ function loadList() { //메인에서 글 불러오는 함수
     tt.setAttribute("id", "index_article_title");
     let p = document.createElement("p");
     p.setAttribute("id", "index_article_p");
-    let para = arr[i].para;
+    let para = arr[i].para.replace(/(<([^>]+)>)/ig,""); //정규식을 통해 태그 빼고 텍스트만 가져오기
     if(para.length > 40) {
       para = para.substring(0, 40)+"...";
     }
@@ -192,7 +192,9 @@ function showArticle() {
   let img = document.createElement("img");
   if(!findImageTag(arr[i].para)) { //기본 이미지가 없으면 기본이미지 삽입
     img.setAttribute("src", "https://loremflickr.com/g/320/240/paris?lock="+Math.floor(Math.random()*200));
-  } 
+  }  else {
+    img.setAttribute("src", findImageTag(arr[i].para));
+  }
   //랜덤이미지, 로딩이 느리므로 로컬로 저장해서 쓰는게 나을듯.
   img.setAttribute("id", "photo");
   let tt = document.createElement("h2");
