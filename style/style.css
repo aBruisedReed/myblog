@@ -312,3 +312,15 @@ footer h5 {
 .upload_button:hover {
   background-color: #444;
 }
+
+/* 모바일용 반응형 레잉아웃 */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .articles {
+    width: 30em;
+    height: 32em;
+  }
+}
