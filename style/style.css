@@ -1,3 +1,7 @@
+html {
+  height:100%;
+}
+
 body {
   margin: 0;
   background-color: #eee;
@@ -25,6 +29,7 @@ header h2 {
 
 section {
   margin-top: 150px;
+  height:100%;
 }
 
 #author {
@@ -248,15 +253,23 @@ form {
 /* footer */
 
 footer {
-  height: 50vh;
+  height: 20vh;
   background-color: #777;
-  text-align: left;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  margin-bottom: 0;
 }
 
 #widget {
   font-size: 10px;
   margin-left: 20px;
-  padding-top: 20px;
+  margin-top: 40px;
+}
+
+#widget span {
+  font-size: 15px;
+  margin: 10px;
 }
 
 footer h5 { 

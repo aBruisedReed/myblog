@@ -266,6 +266,5 @@ $("#temperature-celcius").html(json.main.temp + ' C&deg');
 $("#temperature-farenheit").html((json.main.temp * 1,8 + 32) + ' F&deg');
 $("#humidity").html(json.main.humidity + ' %');
 $("#overall").html(json.weather[0].main);
-$("#icon").html('<img src="http://openweathermap.org/img/w/' + json.weather[0].icon + '.png"</img>');
 });
 });
