@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="scripts/script.js"></script>
-  <script src="https://cdn.ckeditor.com/4.14.1/basic/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="style/style.css">
   <title>My Blog - Write</title>
@@ -12,7 +12,7 @@
   body,h1,h2,h3,h4,h5,input,textarea {font-family: "Raleway", sans-serif}
   </style>
 </head>
-<body onload="loadTitle()">
+<body onload="loadEdit();">
   <header id="header">
   <h1 id="headerH1"><a href="index.html">My Blog</a></h1>
   <h2 id="headerH2">Welcome to the blog of <span id="author">unknown</span></h2>
@@ -29,11 +29,14 @@
         CKEDITOR.replace( 'editor2', {
           height: 700,
         } );
-        
+        document.getElementById('title_write').value = window.localStorage.getItem('temp');
+        let arr = JSON.parse(window.localStorage.getItem('list'));
+        let i = findList();
+        CKEDITOR.instances.editor2.setData(arr[i].para);
       </script>
     </form>
       <button id="writebtn" onclick="editButton()">Edit</button>
-      <button id="cancelbtn" onclick="location.href='index.html';">Cancel</button>
+      <button id="cancelbtn" onclick="location.href='show_article.html';">Cancel</button>
   </section>
   <footer class="edit_footer">
     <h5>Powered by w3.css</h5>

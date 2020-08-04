@@ -19,19 +19,13 @@ function writeButton() {
   location.href='index.html';
 }
 
-function editButton() {
+function editButton() { //edit에서 수정 확정
   let para = CKEDITOR.instances.editor2.getData();
   let title = document.getElementById('title_write').value;
   editList(title, para);
   let arr = JSON.parse(window.localStorage.getItem('list'));
-  location.href='index.html';
+  location.href='show_article.html';
 }
-
-function loadTitle() { //메인에서 적은 임시 제목 가져오기
-  document.getElementById('title_write').value = window.localStorage.getItem('temp');
-}
-
-
 
 function addList(title, para) {
   if(window.localStorage.getItem('list') == null) { //리스트가 비어있다면 초기화
@@ -118,7 +112,7 @@ function loadList() { //메인에서 글 불러오는 함수
   }
 }
 
-function findList() {
+function findList() { 
   let arr = JSON.parse(window.localStorage.getItem('list'));
   for(let i=0; i<arr.length; i++) {
     if(arr[i].title == window.localStorage.getItem('temp')) {
@@ -143,22 +137,25 @@ function moveShow() {
 }
 
 // 수정버튼 클릭 시 기능 구현
-function editClicked() { 
-  let arr = JSON.parse(window.localStorage.getItem('list'));
-  let obj = Object(arr);
-  let i = findList();
+function editClicked() { //show to edit
+  // let arr = JSON.parse(window.localStorage.getItem('list'));
+  // let obj = Object(arr);
+  // let i = findList();
   location.href='edit_article.html';
 }
 
 // edit시 제목과 내용을 불러오는 기능
 function loadEdit() {
-  document.getElementById('title_write').value = window.localStorage.getItem('temp');
-  let arr = JSON.parse(window.localStorage.getItem('list'));
-  let obj = Object(arr);
-  let i = findList();
+  // document.getElementById('title_write').value = window.localStorage.getItem('temp');
+  // let arr = JSON.parse(window.localStorage.getItem('list'));
+  // // let nodes = document.getElementsByClassName('cke_editable cke_editable_themed cke_contents_ltr cke_show_borders');
+  // let nodes = document.getElementsByTagName('iframe');
+  // console.log(nodes);
+  // let innderBody = nodes.item(1);
+  // let i = findList();
+  // innderBody.innerHTML = arr[i].para;
+  // let obj = Object(arr);
 }
-
-
 
 // 삭제버튼 클릭 시 기능 구현
 function delClicked() {
@@ -199,6 +196,7 @@ function showArticle() {
   //랜덤이미지, 로딩이 느리므로 로컬로 저장해서 쓰는게 나을듯.
   img.setAttribute("id", "photo");
   let tt = document.createElement("h2");
+  tt.setAttribute("id", "title");
   tt.innerHTML = arr[i].title;
   let p = document.createElement("p");
   p.innerHTML = arr[i].para;
