@@ -6,8 +6,11 @@ function moveToWrite() {
     let title = document.getElementById("write_input").value;
     window.localStorage.setItem('temp', title); //제목 데이터 저장
     location.href='write_article.html';
-  }
+}
   
+function loadTitle() { //메인에서 적은 임시 제목 가져오기
+  document.getElementById('title_write').value = window.localStorage.getItem('temp');
+}
 
 function writeButton() {
   let para = CKEDITOR.instances.editor1.getData();
