@@ -61,6 +61,19 @@ function editList(title, para) {
   window.localStorage.setItem('list', JSON.stringify(arr));
 }
 
+function findImageTag(text) { //원글에서 이미지 태그 찾아서 이미지 src만 반환, 없으면 false
+  let idx = text.indexOf('<img');
+  if(idx != -1) {
+    // console.log(text.substring(text.indexOf('<img')));
+    let str1 = text.substring(idx);
+    let str2 = str1.substring(str1.indexOf('src='));
+    str1 = str2.substring(str2.indexOf('"')+1, str2.indexOf('"', 10));
+    return str1;
+  } else {
+    return false;
+  }
+}
+
 function loadList() { //메인에서 글 불러오는 함수
   let arr = JSON.parse(window.localStorage.getItem('list'));
   // console.log(arr);
@@ -75,7 +88,11 @@ function loadList() { //메인에서 글 불러오는 함수
     // let like = arr[i].like; 메인에서 보일 필요가 없다.
     let article = document.getElementById("art");
     let img = document.createElement("img");
-    img.setAttribute("src", "https://loremflickr.com/g/320/240/paris?lock="+Math.floor(Math.random()*200));
+    if(!findImageTag(arr[i].para)) {
+      img.setAttribute("src", "https://loremflickr.com/g/320/240/paris?lock="+Math.floor(Math.random()*200));
+    } else {
+      img.setAttribute("src", findImageTag(arr[i].para));
+    }
     //랜덤이미지, 로딩이 느리므로 로컬로 저장해서 쓰는게 나을듯.
     let tt = document.createElement("h3");
     tt.innerHTML = arr[i].title;
@@ -176,7 +193,9 @@ function showArticle() {
   let i = findList();
   let article = document.getElementById('article');
   let img = document.createElement("img");
-  img.setAttribute("src", "https://loremflickr.com/g/320/240/paris?lock="+Math.floor(Math.random()*200));
+  if(!findImageTag(arr[i].para)) { //기본 이미지가 없으면 기본이미지 삽입
+    img.setAttribute("src", "https://loremflickr.com/g/320/240/paris?lock="+Math.floor(Math.random()*200));
+  } 
   //랜덤이미지, 로딩이 느리므로 로컬로 저장해서 쓰는게 나을듯.
   img.setAttribute("id", "photo");
   let tt = document.createElement("h2");
